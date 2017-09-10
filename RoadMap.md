@@ -40,20 +40,19 @@
 
 ## Hello World
 #### Routes
-- go to ``laravel/routes``
+- go to ``laravel/routes/web.php``
 - add the following code
 ```php
-Route::get('/hello', function()
-{
-  return 'Hello World';
-});
-
+  Route::get('/hello', function()
+  {
+    return 'Hello World';
+  });
 ```
 - on your browser you just need put `/hello` after the server adress
 
 ``Route::get('/hello', function(){  return 'Hello World'; });``
 
-- 'Route::' is a method of laravel the defines Routes
+- 'Route::' is a method of laravel to defines Routes
 - 'get' is the http verb that defines a request of some data
 - besides 'get' we can use:
   - get('rota', function() {}); to request data
@@ -64,10 +63,18 @@ Route::get('/hello', function()
   - options('rota', function() {});
   - match(['get', 'post'], 'rota', function() {}); this one detects automatically the kind of verb considering the arguments passed in the array at its beginning
 - '/hello' is the controller called
-- it was declared a anonymous function that usually returns a controller, but here it was just a text return
+- it was declared a anonymous function that usually returns a controller, but here it is just a text return
 
-
-
+#### Passing parameters through the url
+- still in the web.php file
+- add the following code
+```php
+  Route::get('/hello/{name}', function($name) {
+    return 'Hello $name';
+  });
+```
+- This example above add a new feature into our url
+- inside the GET declaration: ``Route::get('/hello/{name}'`` we declared a ``{name}`` and a respective ``$name`` was declared as a function argument inside ``function($name)``. Doing it we passed a new argument that can be used. In this case it was used to print its value on the screen using ``return 'Hello' . $name``.    
 
 
 
