@@ -1,0 +1,11 @@
+{
+    "name": "rodrigo/laravel1",
+    "description": "My first Laravel project",
+    "authors": [
+        {
+            "name": "Rodrigo",
+            "email": "rodrigodot@outlook.com"
+        }
+    ],
+    "require": {}
+}
