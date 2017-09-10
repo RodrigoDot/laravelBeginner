@@ -48,7 +48,7 @@
     return 'Hello World';
   });
 ```
-- on your browser you just need put `/hello` after the server adress
+- on your browser you just need put `/hello` after the server address
 
 ``Route::get('/hello', function(){  return 'Hello World'; });``
 
@@ -84,10 +84,44 @@
     return 'Hello ' . $name;
   });
 ```
-- Here we added a '?' at the get declaration ``{name?}`` and inside the function declaration we defined a default value to ``$name = 'World'``   
+- Here we added a '?' at the get declaration ``{name?}`` and inside the function declaration we defined a default value to ``$name = 'World'``
 
+#### Calling a controller   
+- The code bellow shows how to call a controller
+``Route::get('/hello/', 'HelloController@index');``
+- inside the get declaration, after the route declaration ``Route::get('/hello/')`` we add another parameter ``'HelloController@index'``.
+- here we have some rules to follow
+1. the name passed as argument must be a combination of the name of your controller + controller. in this case: 'Hello' + 'Controller' = 'HelloController'.
+2. the name passed as argument must start using uppercase at each first character of each word. In this case: 'H' of Hello and 'C' of Controller.
+- on the second parameter there is something like this ``@index``. When you declare a controller you must pass the action that this controller will execute. In this case: ``HelloController@index`` will execute an action called 'index'.
 
+#### Creating a Controller
+- Here we can make the controller ourselves or use the laravel ARTISAN
+- run ``php artisan make`` inside the laravel directory
+- using the command MAKE you can have many kind of code created "automagically"
+- run ``php artisan make:controller HelloController``
+- now you have an empty controller called HelloController.php on ``laravel/app/http/controllers``
 
+#### Creating a Action
+- every action is a function inside a controller
+- go to ``laravel/app/http/controllers/HelloController.php`` and add the follow code
+```php
+public function index() {
+  return 'HELLO WORLD';
+}
+```
+- delete or comment the other examples that you have done until now
+- access this page using ``/hello`` after the server address
+
+#### Passing arguments to an action
+- go to ``laravel/routes/web.php`` and change your route to the example bellow
+``Route::get('/hello/{name?}', 'HelloController@index');``
+- go to ``laravel/app/http/controllers/HelloController.php`` and change the code for
+```php
+public function index($name = 'World') {
+  return 'Hello ' . $name;
+}
+```
 
 
 

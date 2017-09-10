@@ -15,6 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello/{name?}', function($name = 'World') {
-  return 'Hello ' . $name;
+/*
+A simple request
+Route::get('/hello', function() {
+   return 'Hello World';
 });
+
+A request passing parameters through the url
+Route::get('/hello/{name}', function($name) {
+  return 'Hello ' .  $name;
+});
+
+A request passing parameters through the url and defining a default value
+Route::get('/hello/{name?}', function($name = 'World') {
+  return 'Hello ' .  $name;
+});
+*/
+
+Route::get('/hello/{name?}', 'HelloController@index');
