@@ -1,2 +1,3 @@
 /vendor/
-/RoadMap.md/
+RoadMap.md/
+.gitignore
