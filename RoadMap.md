@@ -70,11 +70,21 @@
 - add the following code
 ```php
   Route::get('/hello/{name}', function($name) {
-    return 'Hello $name';
+    return 'Hello ' . $name;
   });
 ```
 - This example above add a new feature into our url
 - inside the GET declaration: ``Route::get('/hello/{name}'`` we declared a ``{name}`` and a respective ``$name`` was declared as a function argument inside ``function($name)``. Doing it we passed a new argument that can be used. In this case it was used to print its value on the screen using ``return 'Hello' . $name``.    
+
+#### Passing parameters through the url with a default value
+- still in the web.php file
+- add the following code
+```php
+  Route::get('/hello/{name?}', function($name = 'World') {
+    return 'Hello ' . $name;
+  });
+```
+- Here we added a '?' at the get declaration ``{name?}`` and inside the function declaration we defined a default value to ``$name = 'World'``   
 
 
 
