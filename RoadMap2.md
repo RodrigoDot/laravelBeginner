@@ -122,6 +122,43 @@ public function index($name = 'World') {
   return 'Hello ' . $name;
 }
 ```
+#### Calling a view
+
+- To create views we use the helper called view
+- inside your action function, you have to declare a return calling the helper and passing the name of your view file as bellow:
+
+```php
+public function index($name = 'World') {
+  return view('hello');
+}
+```
+
+- the code above returns the view file as result of the action function.
+
+#### Creating a View
+
+- go to ``laravel/resources/views/``
+- know you have to create your view file
+- when we are using Laravel we have a helper to improve our views called Blade, we can choose if we will use it or not
+- to use the Blade you have to name your view files just like this: ``hello.blade.php``
+- at first the name of the file ``hello.``, second the call to the helper ``blade.`` and at last the name extension ``php``
+- but if you don't want to use Blade you can use a simple php file as a view file, like this: ``hello.php``
+- the laravel will prefer to load the blade file if there are files with the same name. Like this:
+``hello.blade.php`` and ``hello.php``
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
