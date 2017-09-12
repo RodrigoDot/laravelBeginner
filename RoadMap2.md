@@ -170,6 +170,25 @@ public function index($name = 'World') {
 
 *Can you se the difference ?*
 
+#### Catching a data request from post
+
+- To catch some data from post you need use the Request Handler to deal with the data
+- At first you must load the class ``Request`` doing this at your controller:
+
+``use Illuminate\Http\Request;``
+
+- Now inside the action function that will handle this data you must pass a ``(Resquest $request)`` parameter, the name ``$request`` here can be whatever you want, it should be like this:
+
+```php
+public function show(Request $request) {
+  $name = $request->input('name');
+  return echo $name;
+}
+```
+
+- the variable ``$request`` contains all the fields of your form and to get the value of them you must do like the example above
+- at first the name of the variable passed as a Request parameter ``$request``, then you declare the type of field ``->input`` and between brackets the property 'name' of the field ``name``.
+- put all these things in a variable in this case ``$name`` send it to your view and it's done.
 
 
 
