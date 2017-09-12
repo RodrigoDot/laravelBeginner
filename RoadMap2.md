@@ -116,7 +116,7 @@
 - now you have an empty controller called HelloController.php on ``laravel/app/http/controllers``
 - if you put ``--resource`` at the end of the command, when you run your command to create your controller the **ARTISAN** will generate all the default actions automagically
 - if you wanna create a controller or other kind of file inside another directory you can indicate this to **ARTISAN** doing something like this:
-``php artisan make:controller My\\HelloController``
+``php artisan make:controller My\HelloController``
 - doing this the **ARTISAN** will create a directory named ``My`` and inside it will create a controller named ``HelloController.php``  
 
 #### Creating a Action
@@ -239,8 +239,7 @@ public function show(Request $request) {
 
 
 
-
-
+34.50
 
 
 
