@@ -239,7 +239,7 @@ public function show(Request $request) {
 
 
 
-34.50
+
 
 
 
