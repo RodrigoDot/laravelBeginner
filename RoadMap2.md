@@ -341,6 +341,14 @@ public function run()
 }
 ```
 - run ``php artisan db:seed``
+- if happens some error like "table doesn't exist" and you are sure that it exists and it's right
+- run the follow code
+``composer dump-autoload`` and try again
+
+
+
+
+
 
 
 

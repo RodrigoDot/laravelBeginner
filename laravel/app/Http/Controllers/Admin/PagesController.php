@@ -14,7 +14,9 @@ class PagesController extends Controller
      */
     public function index()
     {
-        echo 'samreda tah prestando';
+      $pages = \App\Page::all();
+      return view('admin.pages.index', compact('pages'));
+      //return view('admin.pages.index', ['pages' => $pages]); it could be done like this too
     }
 
     /**
