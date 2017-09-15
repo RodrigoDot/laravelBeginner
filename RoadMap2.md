@@ -345,6 +345,33 @@ public function run()
 - run the follow code
 ``composer dump-autoload`` and try again
 
+#### Doing requests to the database
+
+- to get some data from the database is very simple in laravel, we will use the model and its methods to access the data and print it on the view
+- go to ``laravel/app/http/controllers/admin/PagesController.php``
+- inside the index action we will access the database and send this data to the view
+```php
+$pages = \App\Page::all();
+      return view('admin.pages.index', compact('pages'));
+      //return view('admin.pages.index', ['pages' => $pages]); it could be done like this too
+```
+- it's simple as said before, we declare a variable ``$pages`` the receives the data from somewhere ``\App\Page``
+- this somewhere defines the path to the model that we want to use, in this case the Page model
+- it could be done differently like this:
+```php
+use \App\Page;
+//declaring the namespace of your Model
+$pages = Page::all();
+//the rest of the code
+```
+- above we just need use ``Page`` without declare the whole path of the model
+- after declare the model that we want to use, we must use a method to get the data from the database
+- to use some model class method we use ``::`` after declare the model and then the method that we want to use
+- here to get all data registered over Pages in the database we used the method ``all()``, go to the documentation to know more about
+- finally we just need to send the data to the view as we have already learned before
+
+
+
 
 
 
