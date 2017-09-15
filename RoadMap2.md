@@ -437,6 +437,13 @@ $pages = \App\Page::paginate(10);
 {{$pages->links()}}
 ```
 - ``$pages`` is a array that is passed to the view after be gotten from the database by the PagesController
+- if you want to personalize the paginate selector
+- run ``php artisan vendor:publish --tag=laravel-pagination``
+- now the laravel have copied the files and you can edit it as you want
+- go to ``laravel\resources\views\vendor\pagination``
+- the file that is used ``default.blade.php``, change whatever you want
+- if you want to load other file by default change the call inside the ``PagesController``
+- from this ``$pages = \App\Page::paginate(10);`` to ``$pages = \App\Page::simplePaginate(10);`` for example
 
 
 
