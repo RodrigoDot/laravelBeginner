@@ -283,7 +283,7 @@ $factory->define(App\Page::class, function (Faker $faker) {
 - the **ARTISAN** have generated a new seed file
 - go to ``laravel/database/seeds/PagesTableSeeder.php``
 - in this file you have a function named ``RUN`` this function will call the factory file that we created early
-- run the following code
+- add the following code inside it
 ```php
 public function run()
 {
