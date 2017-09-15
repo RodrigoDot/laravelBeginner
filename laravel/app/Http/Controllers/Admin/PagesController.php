@@ -14,7 +14,7 @@ class PagesController extends Controller
      */
     public function index()
     {
-      $pages = \App\Page::all();
+      $pages = \App\Page::paginate(10);
       return view('admin.pages.index', compact('pages'));
       //return view('admin.pages.index', ['pages' => $pages]); it could be done like this too
     }

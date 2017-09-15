@@ -379,7 +379,7 @@ $pages = Page::all();
 - inside this directory you have to create a view file named ``index.blade.php``
 - make your template or copy someone
 - go to ``laravel/resources/views/admin``
-- we will create one directories here ``layouts``
+- we will create one directory here named as ``layouts``
 - inside the directory ``layouts`` we will create another one ``elements``
 - our views will be modularized, every element on it will have it's won module file
 - first inside ``layouts`` we will create a file named ``default.blade.php``, this file will be our base view, every other element that we want to show in the view will be imported to this one
@@ -418,7 +418,25 @@ $pages = Page::all();
 - we will do the same with the ``index.blade.php``, but at this time we will import it inside the ``body.blade.php``
 - do it by yourself
 
-
+#### Paginating the data on the view
+- when we got the data from the database, we used the ``all()`` method to get every registry in the database
+- to paginate this data and make our view more beautiful we will use now the ``paginate()`` method
+- go to ``laravel/app/http/controllers/admin/PagesController.php``
+- inside the index action change the following code
+```php
+$pages = \App\Page::all();
+```
+- by this one
+```php
+$pages = \App\Page::paginate(10);
+```
+- the ``paginate()`` method gets the data and now we can define how many registries we can see in each page passing a integer as parameter to the paginate method: ``paginate(10)``, here it will show 10 registries by page
+- now we have to add the buttons to select the pages on the view
+- go to ``laravel/resources/views/admin/pages/index.blade.php`` and add the following at the place you want in your page
+```php
+{{$pages->links()}}
+```
+- ``$pages`` is a array that is passed to the view after be gotten from the database by the PagesController
 
 
 
