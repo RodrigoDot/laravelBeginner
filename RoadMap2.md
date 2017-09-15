@@ -368,9 +368,55 @@ $pages = Page::all();
 - after declare the model that we want to use, we must use a method to get the data from the database
 - to use some model class method we use ``::`` after declare the model and then the method that we want to use
 - here to get all data registered over Pages in the database we used the method ``all()``, go to the documentation to know more about
+- to send the data to the view there are two ways showed here, using or not the php compact method
 - finally we just need to send the data to the view as we have already learned before
 
+#### Creating a personalized layout
+- to create a personalized layout we will use some features provided by the helper **Blade**
+- ``@slot``, ``@component`` and it's bind ``{{}}``
+- first of all let's create some directories to organize our files
+- go to ``laravel/resources/views/admin/pages``
+- inside this directory you have to create a view file named ``index.blade.php``
+- make your template or copy someone
+- go to ``laravel/resources/views/admin``
+- we will create one directories here ``layouts``
+- inside the directory ``layouts`` we will create another one ``elements``
+- our views will be modularized, every element on it will have it's won module file
+- first inside ``layouts`` we will create a file named ``default.blade.php``, this file will be our base view, every other element that we want to show in the view will be imported to this one
+- you can make your won template in this file, the only thing you must know is how to import the element view modules to this file
+- to do it, we will use the **Blade's** magic tools
+- we have already used the bind ``{{}}`` to print something in the view before, so you already know how to use it
+- the next is the ``@component``, this one is used to encapsulate some block of code and make it usable somewhere
+- the last one is the ``@slot``, using this one, we can import the piece of code encapsulated using the ``@component``
+- it seems complicated, but it's not
 
+#### Let's do it
+- make your template as you want in the ``default.blade.php`` file
+- you just need to put somewhere inside your body a ``{{@slot}}``, just put it, you will understand
+- now go to ``laravel/resources/views/admin/layouts/elements``
+- here we will create a ``body.blade.php`` file that will be the body of the page
+- in this file we will have to put another ``{{@slot}}``
+- we will start using the **Blade's** magic tools here
+- to make this file usable somewhere we will surround it by a ``@component`` at the beginning and a ``@endcomponent`` at the end, like this:
+```php
+@component
+  your code
+@endcomponent  
+```
+- doing it, all the code inside this tags become a 'COMPONENT'
+- now we must declare where we will use this component, we will pass a parameter to the initial ``@component`` tag
+```php
+@component('admin.layouts.default')
+  your code
+@endcomponent
+```
+- what did we do here ?
+- the parameter passed is the path to the file that will import this one, here we can abstract the path until ``laravel/resources/views`` and put only the path after it
+- as you must already know, when we declare a path in laravel, we use the ``.`` to declare the path instead of ``/``
+- now do you remember the ``{{@slot}}`` that we have put inside the ``default.blade.php`` ?
+- the **Blade** will recognize it as the destine of this piece of code and will import it every time that ``default.blade.php`` needs to be loaded
+- we will do the same with the ``index.blade.php``, but at this time we will import it inside the ``body.blade.php``
+- do it by yourself
 
 
 

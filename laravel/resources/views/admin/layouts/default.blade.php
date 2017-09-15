@@ -21,7 +21,7 @@
           </button>
           <a class="navbar-brand" href="/admin">Laravel 5.4</a>
         </div>
-      </div>
+      </div> 
     </nav>
     <!-- main>section.container -->
     <main>
