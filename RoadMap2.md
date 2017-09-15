@@ -261,7 +261,7 @@ Route::resource('page', 'Admin\PagesController');
 ```php
 use Faker\Generator as Faker;
 
-$factory->define(App\Pages::class, function (Faker $faker) {
+$factory->define(App\Page::class, function (Faker $faker) {
   $name = $faker->name;
     return [
         'title' => $name,
