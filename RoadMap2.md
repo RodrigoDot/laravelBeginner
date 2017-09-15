@@ -255,7 +255,7 @@ Route::resource('page', 'Admin\PagesController');
 #### Defining the data Factories
 
 - run ``php artisan make:factory PagesFactory``
-- the **ARTISAN** have generated an empty Pages.php
+- the **ARTISAN** have generated an empty PagesFactory.php
 - go to ``laravel/database/factories/PagesFactory.php``  
 - put the follow code inside it
 ```php
