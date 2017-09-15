@@ -246,12 +246,86 @@ Route::resource('page', 'Admin\PagesController');
 - on the example above we created a controller ``PagesController`` in the url ``App\Http\Controllers\Admin\PagesController``. the default url to the controllers is ``App\Http\Controllers``, but in this case we want to organize better ours controllers.
 - so to declare where is our controller file we put it into the route declaration ``Admin\PagesController``.
 
+#### Creating Seeds
 
+- seeds are files that create examples to teste, like some users to teste your authentication
+- we will use the Faker plugin to create it to us, Faker is a plugin that generates example data
+- first we will configure our factories and after it configure our seeds
 
+#### Defining the data Factories
 
+- run ``php artisan make:factory PagesFactory``
+- the **ARTISAN** have generated an empty Pages.php
+- go to ``laravel/database/factories/PagesFactory.php``  
+- put the follow code inside it
+```php
+use Faker\Generator as Faker;
 
+$factory->define(App\Pages::class, function (Faker $faker) {
+  $name = $faker->name;
+    return [
+        'title' => $name,
+        'url' => str_slug($name),
+        'body' => $faker->paragraphs
+    ];
+});
+```
+- first we load the Faker plugin ``use Faker\Generator as Faker;``
+- the variable ``$factory`` is a default parameter to use it
+- the method ``define`` receives two parameters, the class model that will be used by Faker and a function
+- this function needs to declare a parameter ``Faker $faker`` that will be used to generate the data and it must return an array with the needed data using key->value, where the value will follow the rules of the Faker generator.
+- to know more about how to use Faker go to [Faker](https://github.com/fzaninotto/Faker)
 
+#### Generating our Seeders
 
+- now we have to create our seeder file
+- run ``php artisan make:seed PagesTableSeeder``
+- the **ARTISAN** have generated a new seed file
+- go to ``laravel/database/seeds/PagesTableSeeder.php``
+- in this file you have a function named ``RUN`` this function will call the factory file that we created early
+- run the following code
+```php
+public function run()
+{
+    \DB::statement('truncate pages');
+    factory(App\Page::class, 100)->create();
+}
+```
+- in this code we have three steps
+- first we clear the table if there is something in there or not
+- ``\DB::statement('truncate pages');``
+- second we call the ``factory`` helper that will call the factory file created
+- in this call we have to pass first the model address ``factory('App\Page::class,`` and an optional parameter that will repeat this actions wo many times we want ``100');``
+- the last step is call the function ``create()`` that will actually create the data
+
+#### Migrating your tables
+
+- to create your tables in the database you will ask the Migrations to do it
+- but if you are using laravel 5.4 or higher, MySQL 5.7.7 or MariaDB 10.2.2 it will generate an error when you run Migrations
+- to fix it you must change your database version or follow this guide
+- go to ``laravel/app/Providers/AppServiceProvider.php``
+- add a call to load the Schema ``use Illuminate\Support\Facades\Schema;``
+- now inside the boot function add ``Schema::defaultStringLength(191);``
+- this will fix the problem, the code should be like this
+```php
+<?php
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+    }
+
+    ***the rest of the code
+}
+```
+- now you can run ``php artisan migrate``
+- the **ARTISAN** must have generated your tables in the database
 
 
 
