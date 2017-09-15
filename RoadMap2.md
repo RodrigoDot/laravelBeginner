@@ -237,6 +237,14 @@ public function show(Request $request) {
 - you have to find a sequence of lines started with 'DB'
 - change what you wanna change
 
+#### Redirecting to a personalized controller directory
+
+- when you want to redirect your request to a controller that isn't in the default controller directory, you have to declare your intention when you declare your route
+```php
+Route::resource('page', 'Admin\PagesController');
+```
+- on the example above we created a controller ``PagesController`` in the url ``App\Http\Controllers\Admin\PagesController``. the default url to the controllers is ``App\Http\Controllers``, but in this case we want to organize better ours controllers.
+- so to declare where is our controller file we put it into the route declaration ``Admin\PagesController``.
 
 
 

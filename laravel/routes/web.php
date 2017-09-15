@@ -35,3 +35,4 @@ Route::get('/hello/{name?}', function($name = 'World') {
 Route::get('/hello/{name?}', 'HelloController@index');
 Route::post('/hello/{name?}', 'HelloController@show');
 Route::resource('pages', 'Admin\PagesController');
+ 

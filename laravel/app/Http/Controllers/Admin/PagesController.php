@@ -14,7 +14,7 @@ class PagesController extends Controller
      */
     public function index()
     {
-        echo 'PAGES OK';
+        echo 'samreda tah prestando';
     }
 
     /**
