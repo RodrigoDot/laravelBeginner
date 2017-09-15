@@ -11,8 +11,7 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::statement('truncate pages');
-
-        factory(App\Page::class, 100)->create();
+      \DB::statement('truncate pages');
+      factory(App\Page::class, 100)->create();
     }
 }
