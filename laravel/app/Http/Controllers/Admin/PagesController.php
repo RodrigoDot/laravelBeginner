@@ -67,7 +67,13 @@ class PagesController extends Controller
     public function edit($id)
     {
       $page = \App\Page::findOrFail($id);
-      return view('admin.pages.edit', compact('page'));
+      if($page['user_id'] === Auth::user()->id ){
+        $owner = true;
+        return view('admin.pages.edit', compact('page', 'owner'));
+      } else {
+        $owner = false;
+        return view('admin.pages.edit', compact('page', 'owner'));
+      }
     }
 
     /**

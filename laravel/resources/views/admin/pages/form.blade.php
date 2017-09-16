@@ -21,12 +21,22 @@
   </div>
 </div>
 
-<!-- div.form-group>div.col-sm-10.col-sm-offset-2>input.btn.btn-primary -->
-<div class="form-group">
-  <div class="col-sm-10 col-sm-offset-2">
-    <button type="submit" class="btn btn-primary">
-      <i class="fa fa-floppy-o"></i>
-      Save
-    </button>
+@if($owner)
+  <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-floppy-o"></i>
+        Save
+      </button>
+    </div>
   </div>
-</div>
+@else
+  <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+      <a class="btn btn-primary" href="{{route('pages.index')}}">
+        <i class="fa fa-chevron-left"></i>
+        Back
+      </a>
+    </div>
+  </div>
+@endif<!-- div.form-group>div.col-sm-10.col-sm-offset-2>input.btn.btn-primary -->
