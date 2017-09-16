@@ -14,11 +14,13 @@ class CreatePagesTable extends Migration
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title', 100);
-            $table->string('url', 100);
-            $table->longText('body');
-            $table->timestamps();
+          $table->increments('id');
+          $table->string('title', 100);
+          $table->string('url', 100);
+          $table->longText('body');
+          $table->timestamps();
+          $table->integer('user_id')->unsigned()->default(1);
+          $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -29,6 +31,7 @@ class CreatePagesTable extends Migration
      */
     public function down()
     {
+        Schema::dropForeign(['user_id']);
         Schema::dropIfExists('pages');
     }
 }
