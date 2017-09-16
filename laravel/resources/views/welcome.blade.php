@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/0b45c1657d.css" />
 
         <!-- Styles -->
         <style>
@@ -69,10 +70,19 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">
+                          <i class="fa fa-user-o"></i>
+                          {{ Auth::user()->name }}
+                          </a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">
+                          <i class="fa fa-sign-in"></i>
+                          Login
+                        </a>
+                        <a href="{{ route('register') }}">
+                          <i class="fa fa-user-plus"></i>
+                          Register
+                        </a>
                     @endauth
                 </div>
             @endif
