@@ -31,17 +31,29 @@
         <a class="btn btn-info" href="{{ route('pages.show', $page->id) }}">
           <i class="fa fa-info-circle" aria-hidden="true"></i> View
         </a>
-        <a class="btn btn-success" href="{{ route('pages.edit', $page->id) }}">
-          <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
-        </a>
-        <form action="{{route('pages.destroy', $page->id)}}" method="post" style="display:inline-block">
-          {!!csrf_field()!!}
-          <input type="hidden" name="_method" value="DELETE" />
-            <button class="btn btn-danger" type="submit">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-               Delete
-            </button>
-        </form>
+        <!-- fim da sessao publica -->
+        @if(Auth::user()->id === $page->user_id)
+          <a class="btn btn-success" href="{{ route('pages.edit', $page->id) }}">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+          </a>
+          <form action="{{route('pages.destroy', $page->id)}}" method="post" style="display:inline-block">
+            {!!csrf_field()!!}
+            <input type="hidden" name="_method" value="DELETE" />
+              <button class="btn btn-danger" type="submit">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                 Delete
+              </button>
+          </form>
+        @else
+          <button class="btn btn-secondary">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+             Edit
+          </button>
+          <button class="btn btn-secondary" type="submit">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+             Delete
+          </button>
+        @endif
       </td>
     </tr>
   @endforeach
