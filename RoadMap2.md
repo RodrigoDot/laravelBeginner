@@ -446,9 +446,11 @@ $pages = \App\Page::paginate(10);
 - from this ``$pages = \App\Page::paginate(10);`` to ``$pages = \App\Page::simplePaginate(10);`` for example
 
 
+explcar como finalizar o crud
 
+explicar como fazer autenticacao
 
-
+php artisan make:auth
 
 
 

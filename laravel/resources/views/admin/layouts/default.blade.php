@@ -21,11 +21,40 @@
             <span class="icon-bar"></span>
           </button>
           <!-- a.btn.btn-primary-outline -->
-          <a href="{{ route('pages.index') }}" class="navbar-brand">
+          <a href="{{ url('/') }}" class="navbar-brand">
             <i class="fa fa-home"></i>
-            Home
+            {{ config('app.name', 'Home') }}
+          </a>
+          <a href="{{ route('pages.index') }}" class="navbar-brand">
+            <i class="fa fa-files-o"></i>
+            Pages Admin
           </a>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="{{ route('home') }}" class="navbar-brand">
+                  <i class="fa fa-user-o"></i>
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                  Logout
+                </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </nav>
     <!-- main>section.container -->
