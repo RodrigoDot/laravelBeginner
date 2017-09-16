@@ -27,7 +27,8 @@ class PagesController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.create');
+        $owner = true;
+        return view('admin.pages.create', compact('owner'));
     }
 
     /**

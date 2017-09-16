@@ -9,6 +9,7 @@ class Page extends Model
     protected $fillable = [
       'title',
       'body',
-      'url'
+      'url',
+      'user_id'
     ];
 }

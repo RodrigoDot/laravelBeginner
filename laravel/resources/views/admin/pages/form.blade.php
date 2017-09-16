@@ -21,7 +21,8 @@
   </div>
 </div>
 
-@if($owner)
+<!-- div.form-group>div.col-sm-10.col-sm-offset-2>input.btn.btn-primary -->
+@if($owner )
   <div class="form-group">
     <div class="col-sm-10 col-sm-offset-2">
       <button type="submit" class="btn btn-primary">
@@ -39,4 +40,4 @@
       </a>
     </div>
   </div>
-@endif<!-- div.form-group>div.col-sm-10.col-sm-offset-2>input.btn.btn-primary -->
+@endif
