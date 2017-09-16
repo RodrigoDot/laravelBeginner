@@ -9,7 +9,7 @@
 #### The database
 
 1. Go to ``laravelBeginner-master/laravel/.env``
-2. Change the setting to your database
+2. Change the setting to your database configuration
 
 #### Migrating the tables
 
