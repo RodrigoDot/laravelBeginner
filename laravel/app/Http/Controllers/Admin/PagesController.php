@@ -37,7 +37,8 @@ class PagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      \App\Page::create($request->all());
+      return response()->redirectToRoute('pages.index');
     }
 
     /**
@@ -73,7 +74,9 @@ class PagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $page = \App\Page::findOrFail($id);
+      $page->update($request->all());
+      return response()->redirectToRoute('pages.show', $id);
     }
 
     /**
@@ -84,6 +87,8 @@ class PagesController extends Controller
      */
     public function destroy($id)
     {
-      echo 'DESTROY PAGE';
+      $page = \App\Page::findOrFail($id);
+      $page->delete($page);
+      return response()->redirectToRoute('pages.index');
     }
 }

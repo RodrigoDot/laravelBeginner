@@ -1,7 +1,7 @@
 {!!csrf_field()!!}
 <!-- div.form-control^label.form-label.col-sm-2^div.col-sm-10>input.form-control -->
-<div class="form-control">
-  <label for="" class="form-label col-sm-2"></label>
+<div class="form-group">
+  <label for="title" class="control-label col-sm-2">titulo</label>
   <div class="col-sm-10">
     <input type="text" name="title" id="title" class="form-control" value="{{$page->title ?? ''}}" placeholder="title">
   </div>
