@@ -26,7 +26,7 @@ class PagesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**
@@ -48,7 +48,7 @@ class PagesController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.pages.show');
     }
 
     /**
@@ -59,7 +59,7 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.edit');
     }
 
     /**
@@ -82,6 +82,6 @@ class PagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+      echo 'DESTROY PAGE';
     }
 }

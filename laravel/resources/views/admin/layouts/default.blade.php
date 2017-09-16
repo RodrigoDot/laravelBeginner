@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/0b45c1657d.css" />
   </head>
   <body>
     <!--nav.navbar.navbar-default.navbar-static-top>div.container-fluid>div.navbar-header>button.navbar-toggle.collapsed>span.sr-only^span.icon-bar*3^a.navbar-brand -->
@@ -19,7 +20,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/admin">Laravel 5.4</a>
+          <!-- a.btn.btn-primary-outline -->
+          <a href="{{ route('pages.index') }}" class="navbar-brand">
+            <i class="fa fa-home"></i>
+            Home
+          </a>
         </div>
       </div>
     </nav>
