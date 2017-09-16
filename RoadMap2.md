@@ -448,6 +448,11 @@ $pages = \App\Page::paginate(10);
 
 
 
+1.31.30
+
+indo para implementacao do auth
+
+falta fazer toda a roadmap de como terminar o crud
 
 
 
