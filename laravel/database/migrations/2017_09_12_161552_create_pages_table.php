@@ -19,7 +19,7 @@ class CreatePagesTable extends Migration
           $table->string('url', 100);
           $table->longText('body');
           $table->timestamps();
-          $table->integer('user_id')->unsigned()->default(1);
+          $table->integer('user_id')->unsigned();
           $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -31,7 +31,8 @@ class CreatePagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropForeign(['user_id']);
-        Schema::dropIfExists('pages');
+      DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+      Schema::dropIfExists('pages');
+      DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

@@ -15,7 +15,7 @@
   </therad>
   <tbody>
     <tr>
-      <td>{{ Auth::user()->name }}</td>
+      <td>{{ $page->owner }}</td>
       <td>{{ $page->title }}</td>
       <td><a href="#">{{ $page->url }}</a></td>
       <td>{{ $page->created_at->format('d/m/Y H:i:s') }}</td>

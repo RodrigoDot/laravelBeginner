@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class PagesController extends Controller
 {
@@ -37,7 +38,9 @@ class PagesController extends Controller
      */
     public function store(Request $request)
     {
-      \App\Page::create($request->all());
+      $page = $request->all();
+      $page['user_id'] = Auth::user()->id;
+      \App\Page::create($page);
       return response()->redirectToRoute('pages.index');
     }
 
@@ -50,6 +53,8 @@ class PagesController extends Controller
     public function show($id)
     {
       $page = \App\Page::findOrFail($id);
+      $owner = \App\User::findOrFail($page->user_id);
+      $page->owner = $owner->name;
       return view('admin.pages.show', compact('page'));
     }
 
