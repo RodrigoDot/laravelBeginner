@@ -3,6 +3,7 @@
 ## Requirements
 
 1. MySQL server
+2. Composer (global install) - I'm not sure about this one
 
 ## How to use
 
