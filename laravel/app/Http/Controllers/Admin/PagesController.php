@@ -99,7 +99,11 @@ class PagesController extends Controller
     public function destroy($id)
     {
       $page = \App\Page::findOrFail($id);
-      $page->delete($page);
-      return response()->redirectToRoute('pages.index');
+      if($page['user_id'] === Auth::user()->id ){
+        $page->delete($page);
+        return response()->redirectToRoute('pages.index');
+      } else {
+        return response()->redirectToRoute('pages.index')->with('message', 'You don\'t have permission to delete this page');;
+      }
     }
 }

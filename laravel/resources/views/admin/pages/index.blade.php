@@ -1,4 +1,9 @@
 @component('admin.layouts.elements.body')
+@if (session('message'))
+    <div class="alert alert-danger">
+        {{ session('message') }}
+    </div>
+@endif
 @slot('title') <i class="fa fa-files-o" aria-hidden="true"></i> @endslot
 @slot('description') Pages Administration @endslot
 <!--table>thead>tr>th*3^^tbody>tr>td*3 -->
@@ -35,7 +40,7 @@
             <button class="btn btn-danger" type="submit">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
                Delete
-            </buuton>
+            </button>
         </form>
       </td>
     </tr>

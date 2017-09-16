@@ -41,10 +41,18 @@ Route::group(['prefix' => 'admin'], function() {
 });
 */
 
-//SEGUNDO PASSO VALIDANDO AUTENTICACAO
+/*SEGUNDO PASSO VALIDANDO AUTENTICACAO
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
   Route::resource('pages', 'Admin\PagesController');
 });
+*/
+
+//TERCEIRO METODO MAIS ATUALIZADO
+Route::prefix('admin')
+  ->middleware(['auth'])
+  ->group(function() {
+    Route::resource('pages', 'Admin\PagesController');
+  });
 
 
 Auth::routes();
