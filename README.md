@@ -23,3 +23,5 @@
 
 1. Using the terminal or console, go to ``laravelBeginner-master/laravel``
 2. Run ``php artisan db:seed``
+
+## Enjoy
