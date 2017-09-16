@@ -1,28 +1,29 @@
-@component('admin.layouts.elements.body')
-@slot('title') Paginas  @endslot
-@slot('description') Gerenciamento de paginas @endslot
-<!--table>thead>tr>th*3^^tbody>tr>td*3 -->
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th class="text-center text-capitalize text-info">#</th>
-      <th class="text-capitalize text-uppercase text-info">Title</th>
-      <th class="text-right text-capitalize text-info">Actions</th>
-    </tr>
-  </thead>
-  @foreach($pages as $page)
-  <tbody>
-    <tr>
-      <td class="text-center">{{$page->id}}</td>
-      <td class="text">{{$page->title}}</td>
-      <td class="text-right">
-        <a href="/pages/view"><input type="button" class="btn btn-info" value="View"></a>
-        <a href="/pages/edit"><input type="button" class="btn btn-secondary" value="Edit"></a>
-        <a href="/pages/destroy"><input type="button" class="btn btn-danger" value="Delete"></a>
-      </td>
-    </tr>
-  @endforeach
-  </tbody>
-</table>
-{{ $pages->links() }}
-@endcomponent
+{!!csrf_field()!!}
+<!-- div.form-control^label.form-label.col-sm-2^div.col-sm-10>input.form-control -->
+<div class="form-control">
+  <label for="" class="form-label col-sm-2"></label>
+  <div class="col-sm-10">
+    <input type="text" name="title" id="title" class="form-control" value="{{$page->title ?? ''}}" placeholder="title">
+  </div>
+</div>
+<!-- div.form-group^label.control-label.col-sm-2^div.col-sm-10>input.form-control -->
+<div class="form-group">
+  <label for="url" class="control-label col-sm-2">Url</label>
+  <div class="col-sm-10">
+    <input type="text" name="url" id="url" class="form-control" value="{{$page->url ?? ''}}" placeholder="url">
+  </div>
+</div>
+<!-- div.form-group>label.control-label.col-sm-2^div.col-sm-10>textarea.form-control -->
+<div class="form-group">
+    <label for="body" class="control-label col-sm-2">Content</label>
+    <div class="col-sm-10">
+    <textarea name="body" id="body" cols="30" rows="10" class="form-control" placeholder="content">{!!$page->body ?? ''!!}</textarea>
+  </div>
+</div>
+
+<!-- div.form-group>div.col-sm-10.col-sm-offset-2>input.btn.btn-primary -->
+<div class="form-group">
+  <div class="col-sm-10 col-sm-offset-2">
+    <input type="submit" class="btn btn-primary" value="Save">
+  </div>
+</div>

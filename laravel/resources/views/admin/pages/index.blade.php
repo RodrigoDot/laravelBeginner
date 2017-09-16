@@ -24,14 +24,19 @@
       <td class="text">{{$page->title}}</td>
       <td class="text-right">
         <a class="btn btn-info" href="{{ route('pages.show', $page->id) }}">
-          <i class="fa fa-eye" aria-hidden="true"></i> View
+          <i class="fa fa-info-circle" aria-hidden="true"></i> View
         </a>
         <a class="btn btn-success" href="{{ route('pages.edit', $page->id) }}">
           <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
         </a>
-        <a class="btn btn-danger" href="{{ route('pages.destroy', $page->id) }}">
-          <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
-        </a>
+        <form action="{{route('pages.destroy', $page->id)}}" method="post" style="display:inline-block">
+          {!!csrf_field()!!}
+          <input type="hidden" name="_method" value="DELETE" />
+            <button class="btn btn-danger" type="submit">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+               Delete
+            </buuton>
+        </form>
       </td>
     </tr>
   @endforeach
